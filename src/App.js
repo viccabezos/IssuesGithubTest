@@ -1,20 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Github from "./components/github";
+import Home from "./components/Homepage";
+import "./index.css";
+
 export default function App() {
   return (
     <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-
-            <li>
-              <Link to="/Github">GitHub</Link>
-            </li>
-          </ul>
+      <div className="flex flex-col">
+        <nav className="bg-gray-800 flex flex-row justify-around text-white">
+          <Link to="/">Home</Link>
+          <Link to="/Github">Issues</Link>
         </nav>
 
         <Switch>
@@ -28,8 +24,4 @@ export default function App() {
       </div>
     </Router>
   );
-}
-
-function Home() {
-  return <h2>Home</h2>;
 }

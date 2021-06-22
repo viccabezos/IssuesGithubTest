@@ -24,24 +24,34 @@ export default function Github() {
   console.log(issues);
 
   return (
-    <div>
-      github issues list
-      <div>
+    <div className="w-full h-screen">
+      <h1>facebook/ create-react </h1>
+      <div></div>
+
+      <div className="mx-2 mt-5 ">
         {issues.map((issue, index) => {
           return (
-            <div className="border border-gray-500 grid grid-cols-6 grid-rows-2">
-              <h2 className="col-start-2 row-start-1">status {issue.state}</h2>
-              <h2 className="col-start-3 row-start-1"> {issue.title}</h2>
+            <div className="m-0.5 border-b-2 bg-gray-100 border-gray-300 // md:w-4/5 ">
+              <div className="grid grid-cols-4 grid-rows-2">
+                <h2 className="col-start-1 text-xs // md:text-base">
+                  status {issue.state}
+                </h2>
+                <h2 className="col-start-2 col-span-2 text-sm // md:text-base">
+                  {issue.title}
+                </h2>
+                <div className="row-start-2 col-start-2 col-span-2">
+                  <h2 className=" text-xs // md:text-base">
+                    created by {issue.user.login}
+                  </h2>
+                  <p className="   text-xs // md:text-base">
+                    last update {issue.updated_at}
+                  </p>
+                </div>
 
-              <h2 className="col-start-4 row-start-2">
-                created by {issue.user.login}
-              </h2>
-              <p className="row-start-2 col-start-3">
-                last update {issue.updated_at}
-              </p>
-              <h2 className="row-start-1 col-start-6">
-                comments ({issue.comments})
-              </h2>
+                <h2 className="col-start-4 text-xs // md:text-base ">
+                  comments ({issue.comments})
+                </h2>
+              </div>
             </div>
           );
         })}

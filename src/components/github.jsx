@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import tailwindcss from "tailwindcss";
+import { token } from "../config";
 import { Octokit } from "@octokit/rest";
 
 export default function Github() {
   const { Octokit } = require("@octokit/rest");
   const [issues, SetIssues] = useState([]);
   const octokit = new Octokit({
-    auth: " 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",
+    auth: token,
   });
 
   useEffect(() => {

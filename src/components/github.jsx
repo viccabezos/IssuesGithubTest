@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { token } from "../config";
 import { Octokit } from "@octokit/rest";
+import { useParams } from "react-router-dom";
+import Pagination from "./pagination";
 
 export default function Github() {
   const { Octokit } = require("@octokit/rest");
   const [issues, SetIssues] = useState([]);
+  const [currentPage, setCurrentPage] = useState();
+  const [nextPage, setNextPage] = useState();
+  const [prevPage, setPrevPage] = useState();
+
   const octokit = new Octokit({
     auth: token,
   });
@@ -12,7 +18,7 @@ export default function Github() {
   useEffect(() => {
     async function getIssues() {
       const { data } = await octokit.request(
-        "GET /repos/facebook/react/issues",
+        "GET /repos/facebook/react/issues?page=${page}",
         { owner: "facebook", repo: "react" }
       );
 
@@ -23,10 +29,14 @@ export default function Github() {
   }, []);
   console.log(issues);
 
+  const { page } = useParams();
+
   return (
     <div className="w-full h-screen">
       <h1>facebook/ create-react </h1>
-      <div></div>
+      <div>
+        <Pagination nextPage={nextPage} prevPage={prevPage} />
+      </div>
 
       <div className="mx-2 mt-5 ">
         {issues.map((issue, index) => {

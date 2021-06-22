@@ -8,7 +8,7 @@ function Router() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/Github">
+        <Route path="/Github/:page">
           <Github />
         </Route>
         <Route path="/">

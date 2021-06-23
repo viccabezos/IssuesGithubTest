@@ -5,7 +5,7 @@ class Home extends Component {
   render() {
     return (
       <div className="flex flex-col justify-center">
-        <img src={gitlogo} alt="github" className="flex m-auto w-3/5" />
+        <img src={gitlogo} alt="github" className="flex m-auto w-3/5 // md:w-2/5" />
         <h1 className="text-center text-xl  m-14">Welcome</h1>
       </div>
     );

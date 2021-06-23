@@ -18,7 +18,7 @@ export default function Github() {
   useEffect(() => {
     async function getIssues() {
       const { data } = await octokit.request(
-        "GET /repos/facebook/react/issues?page=${page}",
+        "GET /repos/facebook/react/issues",
         { owner: "facebook", repo: "react" }
       );
 
@@ -32,7 +32,7 @@ export default function Github() {
   const { page } = useParams();
 
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-screen ">
       <h1>facebook/ create-react </h1>
       <div>
         <Pagination nextPage={nextPage} prevPage={prevPage} />
